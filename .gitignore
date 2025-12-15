@@ -1,0 +1,19 @@
+# --- Python Backend ---
+__pycache__/
+*.pyc
+venv/
+env/
+*.db
+hospital.db
+.pytest_cache/
+
+# --- React Frontend ---
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.env
+.DS_Store
+
+# --- IDEs ---
+.vscode/
+.idea/
