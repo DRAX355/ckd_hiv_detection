@@ -59,7 +59,7 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git clone https://github.com/DRAX355/ckd_hiv_detection
 cd CKD_Project
 ```
 
