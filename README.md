@@ -7,7 +7,7 @@ A robust **Clinical Decision Support System (CDSS)** designed to assist medical 
 ## 🌟 Key Features
 
 ### 🎯 99% Accuracy DNN Model
-Trained on the UCI Machine Learning Repository dataset, specifically tuned for HIV-CKD parameters.
+Trained on a custom-engineered **Synthetic Dataset** designed to mirror real-world HIV-CKD parameters, ensuring robust performance on critical markers like CD4 count and Creatinine.
 
 ### 📄 Intelligent File Parsing
 Upload PDF, JPG, or PNG lab reports. The system uses OCR (Tesseract) and Regex to automatically extract clinical vitals (Creatinine, CD4, Albumin, etc.), reducing manual entry errors.
@@ -185,11 +185,24 @@ Navigate to the **History** tab to see a table of all saved patient records and 
 
 ---
 
-## 🧠 Model Training (Optional)
+## 🧠 Model Training & Dataset
+
+This project utilizes a **Synthetic Dataset** generated specifically to validate the system's architecture. Unlike public datasets (like UCI CKD), this synthetic data includes critical HIV-specific parameters (such as CD4 count) essential for TDF toxicity analysis, ensuring the model is tested against clinically relevant scenarios.
+
+### Why Synthetic Data?
+
+- **HIV-Specific Parameters**: Includes CD4 count and other HIV-related biomarkers not available in standard CKD datasets
+- **TDF Toxicity Analysis**: Enables accurate assessment of Tenofovir contraindications
+- **Clinical Relevance**: Mirrors real-world scenarios for HIV-CKD comorbidity
+- **Privacy Compliance**: No patient data privacy concerns
+
+---
+
+### Retraining the Model (Optional)
 
 If you wish to retrain the model from scratch or regenerate the synthetic dataset:
 
-### Option A: Local Training
+#### Option A: Local Training
 
 Run the included training script in the backend folder:
 
@@ -198,9 +211,9 @@ cd backend
 python training_model.py
 ```
 
-This will overwrite `ckd_hiv_model.h5` and `scaler.pkl` with new versions.
+This will overwrite `ckd_hiv_model.h5` and `scaler.pkl` with new versions trained on the generated data.
 
-### Option B: Google Colab
+#### Option B: Google Colab
 
 We have provided a Jupyter Notebook (`colab_training.ipynb`) in the repository.
 
@@ -217,7 +230,7 @@ We have provided a Jupyter Notebook (`colab_training.ipynb`) in the repository.
 CKD_Project/
 ├── backend/
 │   ├── api.py                  # Flask API server
-│   ├── training_model.py       # Model training script
+│   ├── training_model.py       # Model training script (generates synthetic data)
 │   ├── ckd_hiv_model.h5        # Pre-trained DNN model
 │   ├── scaler.pkl              # Feature scaler
 │   ├── requirements.txt        # Python dependencies
@@ -264,44 +277,14 @@ Contributions are welcome!
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-```
-MIT License
-
-Copyright (c) 2024
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
----
-
 ## 🙏 Acknowledgements
 
-- [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php) - CKD Dataset
 - [TensorFlow](https://www.tensorflow.org/) - Deep Learning Framework
 - [Flask](https://flask.palletsprojects.com/) - Backend Framework
 - [React](https://reactjs.org/) - Frontend Framework
 - [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) - Optical Character Recognition
 - [Tailwind CSS](https://tailwindcss.com/) - UI Styling
+- [Scikit-Learn](https://scikit-learn.org/) - Machine Learning Tools
 
 ---
 
@@ -315,14 +298,20 @@ For questions, feedback, or support:
 
 ## 🩺 Medical Disclaimer
 
-This system is designed as a **Clinical Decision Support Tool** and should not replace professional medical judgment. Always consult with qualified healthcare professionals for diagnosis and treatment decisions.
+This system is designed as a **Clinical Decision Support Tool** and should not replace professional medical judgment. The model is trained on synthetic data for validation purposes. Always consult with qualified healthcare professionals for diagnosis and treatment decisions.
 
 ---
 
-**⭐ If you find this project helpful, please give it a star!**
+## 🔬 Research & Validation Note
+
+This project uses a synthetic dataset designed to demonstrate the system's capabilities and architecture. For clinical deployment, the model should be retrained and validated using real-world patient data in compliance with healthcare regulations (HIPAA, GDPR, etc.) and institutional review board (IRB) approval.
 
 ---
 
 ## 🔐 Security Note
 
 The default admin credentials (`admin/123`) are for initial setup only. **Please change them immediately** after first login to ensure system security.
+
+---
+
+**⭐ If you find this project helpful, please give it a star!**
